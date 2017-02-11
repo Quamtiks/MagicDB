@@ -1,10 +1,11 @@
 
 #!/usr/bin/perl
 use strict;
+use warnings;
 use Getopt::Long;
 
 # setup my defaults
-my $data   		= "file.dat";
+my $data   	= "file.dat";
 my $term     	= '';
 my $email_from 	= '';
 my $email_to 	= '';
