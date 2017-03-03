@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+\title{Bases Tarea 1}
+\author{Kenneth Sanchez Marin, Gustavo González }
+\date{Marzo 2017}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+\subsection{Objetivo}
+Introducir al estudiante al análisis bases de datos ya existentes.
+\subsection{Parte 1 - Diseño}
+Se debe realizar el diseño de una base de datos que se encargue de organizar duelos de magic. Estos duelos son dados por distintos jugadores, de varios husos horarios en distintos países alrededor del mundo. Es necesario obtener el tiempo promedio de juego, las cartas más utilizadas, las cartas más raras y los juegos más interesantes. En este juego de magic cada carta que ingresa al mundo del juego debe de estar registrada, también se debe de registrar cada movimiento del juego y se registra cada intercambio de cartas (en cuanto se vendieron, cuando sucedió el evento, porqué sucedió, cuales cartas se intercambiaron, etc). Las cartas de deben de clasificar por la clasificación estándar del Juego Magic. Además se debe de guardar un ranking.
+
+Las instrucciones del juego se pueden acceder en la siguiente dirección:
+\textit{http://es.wikihow.com/jugar-Magic-The-Gathering}
+\subsection{Parte 2 - Análisis de BD}
+Basado en la base de datos pública que se puede obtener desde la siguiente ubicación: 
+https://goo.gl/BMMNT7
+
+Realice lo siguiente:
+
+\begin{itemize}
+    \item Un Modelo relacional de la base de datos compartida.
+    \item Extraiga solo el subconjunto de información que corresponde a Nicaragua y cree una nueva base de datos de MySQL.
+    \item Cree consultas para:
+    \begin{itemize}
+        \item Obtener la lista de direcciones IP relacionadas con el gobierno nicaraguense.
+        \item La lista de Tickets por países centroamericanos.
+        \item Lista de Tickets por Institución.
+        \item El consecutivo de Tickets.
+        \item Cuáles números de tickets están asociados a un determinado país centroamericano.
+    \end{itemize}
+\end{itemize}
+Además debe crear un cliente en Perl que extraiga la información de Wikileaks relacionadas a hackingteam, este cliente debe de permitir los siguiente:
+
+\begin{itemize}
+    \item Parseo a CSV de los resultados de Wikileaks de la siguiente dirección, estos resultados deben de ser la suma de todos los resultados provistos por este sitio web. O sea si existen 5 páginas de resultados, es necesario revisarlas todas e incluirlas en el CSV.
+    \item El link es: https://www.wikileaks.org/hackingteam/emails/
+    \item El cliente deberá permitir realizar una búsqueda en consola por: palabra en todo el correo, correo de envío y correo de recibido.
+    \item El cliente deberá permitir realizar una búsqueda dada una expresión regular en consola por: palabra en todo el correo, correo de envío y correo de recibido.
+    \item El cliente deberá de utilizar la biblioteca GetOpt.
+\end{itemize}
+
+\section{Ambiente de Desarrollo}
+Se utilizaron las siguientes herramientas para el desarrollos de esta tarea (Todos sobre GNU/Linux).
+\subsection{Parte 1 - Diseño}
+Para esta parte se utilizaron:
+\begin{itemize}
+    \item Se trabaja con \textit{Dia} para crear diagrama relacional.
+    \item Se \textit{Google Drive} para convertir a pdf.
+\end{itemize}
+\subsection{Parte 2 - Análisis de DB}
+Para esta parte se utilizaron:
+\begin{itemize}
+    \item Se utilizó \textit{MySQLWorkbench} para trabajar con la bases de datos.
+    \item La herramienta reverse engineering de \textit{Workbench} permite crear un diagrama de la base de datos.
+\end{itemize}
+\subsection{Parte 3 - Perl}
+Para esta parte se utilizaron:
+
+\begin{itemize}
+    \item \textit{SublimeText3}, para la edición. 
+    \item \textit{Terminal de Linux}, para correr los scrips.
+\end{itemize}
+
+\section{Estructuras de datos usadas y funciones}
+Se usaron la bibliotecas:
+\begin{itemize}
+    \item \textit{GetOpt}
+    \item \textit{LPW::AgentUser}
+\end{itemize}
+
+\section{Instrucciones para ejecutar el programa}
+\subsection{Parte 1 - Diseño}
+Solamente abrir el pdf.
+
+\subsection{Parte 2 - Análisis de DB}
+Debe descargar la base de datos \textit{https://goo.gl/BMMNT7}
+Luego deberá correr el script en MySQLWorkbench y guardar con el nombre DATABASE
+Descargar las consultas correspondientes, de seguido simplemente correr el código
+
+\subsection{Parte 3 - Perl}
+El programa de perl se ejecuta de la siguiente manera en la terminal de Linux:
+\begin{lstlisting}[language=bash]
+  $ perl cliente -t [arg] -f [arg] -r [arg] -o [arg]
+\end{lstlisting}
+
+Donde:\newline
+-t [arg] es el termino de la búsqueda.\newline
+-f [arg] es el email del remitente a buscar.\newline
+-r [arg] es el email del receptor a buscar.\newline
+-o [arg] es el nombre del  archivo de salida (default.txt por defecto).
+\section{Actividades realizadas por estudiante}
+\subsection{Gustavo}
+\begin{itemize}
+    \item Análisis de la DB, 3 horas.
+    \item Parte 1, 2 horas.
+    \item Perl, 10 horas divididas en 5 horas, 2 días. 
+    \item Documentación, 2 horas.
+\end{itemize}
+
+\subsection{Kenneth}
+\begin{itemize}
+    \item Análisis de diagrama para Magic, 2 horas.
+    \item Escritura de diagrama para Magic, 1 horas.
+    \item Análisis de la DB de Kayako, 3 horas.
+    \item Creación de consultas para la bases de datos y diagrama, 6 horas.
+    \item Perl, 5 horas divididas en 2 días. 
+    \item Documentación, 2 horas.
+\end{itemize}
+
+
+\subsection{Total}
+33 horas laboradas sumadas en total, pero cabe resaltar que ambos trabajaron al mismo tiempo colaborando entre si, así que el total disminuye.
+
+\section{Comentarios finales (estado del programa)}
+\subsection{Parte 1}
+En los diagramas se ven atributos como "NombreCarta1" "NombreCartaN" esto es para hacer mención a que en un deck, cambio u otro aspectos pueden existir "x" cantidad de cartas y por lo indica que la tabla contiene esa x cantidad,además se recomienda ver vídeos introductorios sobre el juego de mesa para entender con mayor facilidad cuales aspectos del juego deberían relacionarse entre si y cuales no.
+
+\subsection{Parte 2}
+Recordar guardar la base como DATABASE ya que esta usa el comando USE 'DATABASE' por lo que no utilizara otra base que no se llame de esta manera, muchos de las consultas no retornaran resultados esto se debe a que no existen resultados que cumplan con los criterios
+
+
+\subsection{Parte 3}
+Se completó la parte lógica con éxito, aunque el archivo de salida no es un \textit{csv}, sino un \textit{txt}. Esto debido a que se debían de hacer muchos parseos de texto para que el \textit{csv} se viera bien estéticamente. Por lo tanto se decidió un formato mas cómodo a la vista. 
+
+\section{Conclusiones}
+El proyecto fue provechoso y beneficioso, esto debido al arduo trabajo de investigación que este contenía. El uso de MySQL y Perl dieron grandes dividendos al equipo de trabajo. No solo esto sino que el aprendizaje de la biblioteca \textit{GetOpt} sera de gran ayuda en proyectos futuros, no solo de este curso, sino de otros mas en toda la carrera. 
+
+\section{Bibliografía}
+
+\begin{itemize}
+       
+    \item http://perldoc.perl.org/Getopt/Long.html
+    
+    \item http://es.wikihow.com/jugar-Magic-The-Gathering
+
+    \item http://perlenespanol.com/tutoriales/cgi/envio_de_datos_a_documentos_post_o_get.html
+    
+\end{itemize}
+
+
+\end{document}
